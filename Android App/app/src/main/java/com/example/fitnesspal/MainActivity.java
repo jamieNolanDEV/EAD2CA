@@ -2,7 +2,10 @@ package com.example.fitnesspal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -19,15 +22,16 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-
+    ImageView BFI;
     private TextView quoteOfTheDay;
     JSONObject jsonObj = new JSONObject();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        BFI = findViewById(R.id.BFI);
+
         quoteOfTheDay = findViewById(R.id.quote);
         OkHttpClient client = new OkHttpClient();
         String url = "https://type.fit/api/quotes";
@@ -62,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 }
+            }
+        });
+        BFI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, UserDataActivity.class));
             }
         });
     }
