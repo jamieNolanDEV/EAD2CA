@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -22,22 +25,13 @@ public class UserDataActivity extends AppCompatActivity {
     String firstname = "Test";
     String secondName = "TestSecondName";
     String gender = "MALE";
-    String age = "5";
-    String weightKG = "100";
-    String heightCM = "100";
+    int age = 5;
+    int weightKG = 5;
+    int heightCM = 5;
     String workouts = "100";
 
 
 
-    String postBody="{\n" +
-            "    \"firstname\": \""+firstname+"\",\n" +
-            "    \"secondname\": \""+secondName+"\",\n" +
-            "    \"gender\": \""+gender+"\"\n" +
-            "    \"age\": \""+age+"\"\n" +
-            "    \"weightKG\": \""+weightKG+"\"\n" +
-            "    \"heightCM\": \""+heightCM+"\"\n" +
-            "    \"workouts\": \""+workouts+"\"\n" +
-            "}";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final OkHttpClient client = new OkHttpClient();
@@ -45,7 +39,32 @@ public class UserDataActivity extends AppCompatActivity {
         final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_data);
+        JSONObject jsonObject = new JSONObject();
+        JSONObject childObject = new JSONObject();
+        try {
+            childObject.put("workoutDuration", 1);
+            childObject.put("workoutDetails", "yourEmail@com");
+            childObject.put("caloriesBurned", 6);
 
+        } catch (
+                JSONException e) {
+            e.printStackTrace();
+        }
+        String postBody="{\n" +
+                "    \"firstname\": \""+firstname+"\",\n" +
+                "    \"secondname\": \""+secondName+"\",\n" +
+                "    \"gender\": \""+gender+"\"\n" +
+                "    \"age\": \""+age+"\"\n" +
+                "    \"weightKG\": \""+weightKG+"\"\n" +
+                "    \"heightCM\": \""+heightCM+"\"\n" +
+                "    \"workouts\": \""+childObject+"\"\n" +
+                "}";
+
+        try {
+            postRequest(postUrl,postBody);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     void postRequest(String postUrl,String postBody) throws IOException {
 
