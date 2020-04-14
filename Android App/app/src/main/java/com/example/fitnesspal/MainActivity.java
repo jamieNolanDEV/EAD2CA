@@ -23,9 +23,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView BFI;
+    private ImageView BFI;
     private TextView quoteOfTheDay;
-    JSONObject jsonObj = new JSONObject();
+    private JSONObject jsonObj = new JSONObject();
+    private String name, lastname, gender, age, weightKG, heightCM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
