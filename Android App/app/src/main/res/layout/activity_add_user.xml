@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="181dp"
+            android:layout_marginTop="15dp"
             android:orientation="vertical">
 
             <ImageView
@@ -50,7 +50,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
 
-                android:text="Set your password here, make sure this is secure!"
+                android:text="Please Enter your Details Below"
                 android:textColor="@color/colorWhite"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -69,7 +69,48 @@
             <EditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="38dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/colorWhite"
+                android:hint="Username"
+                android:inputType="text"
+                android:layout_marginBottom=c
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etPasswordLayout"
+                android:layout_width="match_parent"
+
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="@color/colorWhite"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textColorHint="@color/colorPrimaryDark"/>
+
+                         </com.google.android.material.textfield.TextInputLayout>
+
+
+            <EditText
+                android:id="@+id/height"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
                 android:hint="Username"
@@ -80,31 +121,34 @@
                 android:paddingRight="20dp"
                 android:textColorHint="@color/colorPrimaryDark"/>
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etPasswordLayout"
+            <EditText
+                android:id="@+id/weight"
                 android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Password"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:background="@color/colorWhite"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:textSize="16sp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textColorHint="@color/colorPrimaryDark"/>
-
-                ]            </com.google.android.material.textfield.TextInputLayout>
-
-
+                android:background="@color/colorWhite"
+                android:hint="Your Current Weight"
+                android:inputType="text"
+                android:layout_marginBottom="25dp"
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorPrimaryDark"/>
+            <EditText
+                android:id="@+id/Gender"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/colorWhite"
+                android:hint="Male/Female"
+                android:inputType="text"
+                android:layout_marginBottom="25dp"
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorPrimaryDark"/>
 
 
 
