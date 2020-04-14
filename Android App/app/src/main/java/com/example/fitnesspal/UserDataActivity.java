@@ -29,7 +29,7 @@ public class UserDataActivity extends AppCompatActivity {
     int weightKG = 5;
     int heightCM = 5;
     String workouts = "100";
-
+    String testforSonar;
 
 
     @Override
