@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
@@ -31,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BFI = findViewById(R.id.BFI);
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("firstStart", true);
+        if (firstStart) {
+            setStarted();
+            startActivity(new Intent(MainActivity.this, AddUser.class));
+        }
 
         quoteOfTheDay = findViewById(R.id.quote);
         OkHttpClient client = new OkHttpClient();
@@ -74,6 +81,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, UserDataActivity.class));
             }
         });
+    }
+    private void setStarted() {
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
     }
 }
 
