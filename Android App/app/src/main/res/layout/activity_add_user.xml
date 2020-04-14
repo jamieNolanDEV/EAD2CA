@@ -74,7 +74,7 @@
                 android:background="@color/colorWhite"
                 android:hint="Username"
                 android:inputType="text"
-                android:layout_marginBottom=c
+
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             try {
-                                quoteOfTheDay.setText(jsonObj.getString("text"));
+                                quoteOfTheDay.setText(jsonObj.get("text").toString());
                             } catch (JSONException e) {
                                 quoteOfTheDay.setText("No quote found!");
                                 e.printStackTrace();
