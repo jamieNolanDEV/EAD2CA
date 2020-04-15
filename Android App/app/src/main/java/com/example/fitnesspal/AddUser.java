@@ -26,7 +26,7 @@ import okhttp3.Response;
 
 public class AddUser extends AppCompatActivity {
     private EditText fname, lname,age, height, weight;
-    private String userDataURL = "http://fitnesswebapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
+    private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
     private Button Confirm;
     private RadioGroup genderGroup;
     private RadioButton gender;

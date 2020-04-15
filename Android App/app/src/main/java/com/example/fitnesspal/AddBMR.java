@@ -27,7 +27,7 @@ import okhttp3.Response;
 
 public class AddBMR extends AppCompatActivity {
     private EditText BMR;
-    private String userDataURL = "http://fitnesswebapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
+    private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
     private Button Confirm;
     private String userId;
     String bmr;
@@ -62,6 +62,7 @@ public class AddBMR extends AppCompatActivity {
         MediaType MEDIA_TYPE = MediaType.parse("application/json");
 
         OkHttpClient client = new OkHttpClient();
+        userId = "1";
 
         JSONObject postdata = new JSONObject();
         try {
@@ -93,7 +94,6 @@ public class AddBMR extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
 
                 String mMessage = response.body().string();
-                Toast.makeText(AddBMR.this, "Updated BMR!", Toast.LENGTH_SHORT).show();
             }
         });
     }

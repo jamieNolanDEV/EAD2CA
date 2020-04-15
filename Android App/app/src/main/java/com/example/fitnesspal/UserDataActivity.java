@@ -24,7 +24,7 @@ import okhttp3.Response;
 
 public class UserDataActivity extends AppCompatActivity {
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    private String userDataURL = "http://fitnesswebapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
+    private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
     String firstname = "Test";
     String secondName = "TestSecondName";
     String gender = "MALE";
