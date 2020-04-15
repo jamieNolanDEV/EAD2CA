@@ -35,7 +35,7 @@ public class AddBMI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_add_user);
+        setContentView(R.layout.activity_add_b_m_i);
         Confirm = findViewById(R.id.addbmi);
 
         Confirm.setOnClickListener(new View.OnClickListener() {

@@ -23,7 +23,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView BFI;
+    private ImageView BFI,BMI;
     private TextView quoteOfTheDay;
     private JSONObject jsonObj = new JSONObject();
     private String name, lastname, gender, age, weightKG, heightCM;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BFI = findViewById(R.id.BFI);
+        BMI = findViewById(R.id.bmi);
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         boolean firstStart = prefs.getBoolean("firstStart", true);
         if (firstStart) {
@@ -79,9 +80,16 @@ public class MainActivity extends AppCompatActivity {
         BFI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, UserDataActivity.class));
+                startActivity(new Intent(MainActivity.this, AddBMR.class));
             }
         });
+        BMI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddBMI.class));
+            }
+        });
+
     }
     private void setStarted() {
 
