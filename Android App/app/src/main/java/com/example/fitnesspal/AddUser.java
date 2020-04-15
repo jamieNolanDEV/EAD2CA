@@ -3,6 +3,7 @@ package com.example.fitnesspal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,10 +12,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -25,16 +28,19 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class AddUser extends AppCompatActivity {
+    public static final String SHARED_PREFS = "sharedPrefs";
+    String userId;
     private EditText fname, lname,age, height, weight;
     private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
     private Button Confirm;
+    ArrayList<String> userIdJSON = new ArrayList<String>();
     private RadioGroup genderGroup;
     private RadioButton gender;
     String fnameStr, lnameStr, ageStr, heightStr, weightStr, genderStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        userId="1";
         setContentView(R.layout.activity_add_user);
         Confirm = findViewById(R.id.add);
         age = findViewById(R.id.age);
@@ -117,5 +123,22 @@ public class AddUser extends AppCompatActivity {
             }
         });
     }
+    public void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("userId", userId);
+        editor.apply();
+
+    }
+
+
+
+
+    public void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        userId = sharedPreferences.getString("userId", "");
+    }
+
+
 
 }

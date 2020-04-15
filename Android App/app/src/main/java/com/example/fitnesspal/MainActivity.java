@@ -23,10 +23,12 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView BFI,BMI;
+    private ImageView BFI,BMI, AddWorkout;
     private TextView quoteOfTheDay;
+    public static final String SHARED_PREFS = "sharedPrefs";
+
     private JSONObject jsonObj = new JSONObject();
-    private String name, lastname, gender, age, weightKG, heightCM;
+    private String name, lastname, gender, age, weightKG, heightCM,userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BFI = findViewById(R.id.BFI);
         BMI = findViewById(R.id.bmi);
+        AddWorkout = findViewById(R.id.addWorkout);
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         boolean firstStart = prefs.getBoolean("firstStart", true);
         if (firstStart) {
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     final String myResponse = response.body().string();
                     try {
                          jsonObj = new JSONObject(myResponse);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -89,8 +93,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, AddBMI.class));
             }
         });
+        AddWorkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, addWorkout.class));
+            }
+        });
 
     }
+    public void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        userId = sharedPreferences.getString("userId", "");
+    }
+
     private void setStarted() {
 
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);

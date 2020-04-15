@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddBMR"></activity>
+        <activity android:name=".addWorkout"></activity>
+        <activity android:name=".AddBMR" />
         <activity android:name=".AddBMI" />
         <activity android:name=".AddUser" />
         <activity android:name=".UserDataActivity" />

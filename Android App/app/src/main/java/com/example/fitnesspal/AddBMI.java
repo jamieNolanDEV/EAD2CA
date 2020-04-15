@@ -27,6 +27,7 @@ import okhttp3.Response;
 
 public class AddBMI extends AppCompatActivity {
     private EditText BMI;
+    public static final String SHARED_PREFS = "sharedPrefs";
     private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
     private Button Confirm;
     private String userId;

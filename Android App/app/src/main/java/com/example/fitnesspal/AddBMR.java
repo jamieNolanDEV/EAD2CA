@@ -3,6 +3,7 @@ package com.example.fitnesspal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ import okhttp3.Response;
 
 public class AddBMR extends AppCompatActivity {
     private EditText BMR;
+    public static final String SHARED_PREFS = "sharedPrefs";
     private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
     private Button Confirm;
     private String userId;
@@ -97,5 +99,10 @@ public class AddBMR extends AppCompatActivity {
             }
         });
     }
+    public void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        userId = sharedPreferences.getString("userId", "");
+    }
+
 
 }

@@ -3,6 +3,7 @@ package com.example.fitnesspal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,9 +26,11 @@ import okhttp3.Response;
 public class UserDataActivity extends AppCompatActivity {
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
+    public static final String SHARED_PREFS = "sharedPrefs";
     String firstname = "Test";
     String secondName = "TestSecondName";
     String gender = "MALE";
+    String userId;
     Button Post;
     int age = 5;
     int weightKG = 5;
@@ -109,6 +112,11 @@ public class UserDataActivity extends AppCompatActivity {
             }
         });
     }
+    public void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        userId = sharedPreferences.getString("userId", "");
+    }
+
 
 
 }
