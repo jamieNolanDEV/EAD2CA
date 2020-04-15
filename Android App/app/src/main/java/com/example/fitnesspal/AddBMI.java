@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,46 +25,30 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class AddUser extends AppCompatActivity {
-    private EditText fname, lname,age, height, weight;
+public class AddBMI extends AppCompatActivity {
+    private EditText BMI;
     private String userDataURL = "http://fitnesswebapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
     private Button Confirm;
-    private RadioGroup genderGroup;
-    private RadioButton gender;
-    String fnameStr, lnameStr, ageStr, heightStr, weightStr, genderStr;
+    private String userId;
+    String bmi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_add_user);
-        Confirm = findViewById(R.id.add);
-        age = findViewById(R.id.age);
-        fname = findViewById(R.id.fname);
-        lname = findViewById(R.id.lname);
-        height = findViewById(R.id.height);
-        weight = findViewById(R.id.weight);
+        Confirm = findViewById(R.id.addbmi);
 
         Confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 fnameStr = fname.getText().toString();
-                 lnameStr = lname.getText().toString();
-                 ageStr = age.getText().toString();
-                 heightStr = height.getText().toString();
-                 weightStr = weight.getText().toString();
-                genderGroup = findViewById(R.id.gender);
-
-                int selectedId = genderGroup.getCheckedRadioButtonId();
-                gender = (RadioButton) findViewById(selectedId);
-
-                genderStr =gender.getText().toString();
+                bmi = Confirm.getText().toString();
 
                 try {
-                    postRequest(userDataURL);
+                    postRequest(userDataURL, userId);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(AddUser.this, MainActivity.class);
+                Intent intent = new Intent(AddBMI.this, MainActivity.class);
 
                 startActivity(intent);
 
@@ -72,7 +57,7 @@ public class AddUser extends AppCompatActivity {
 
 
     }
-    public void postRequest(String userDataURL) throws IOException {
+    public void postRequest(String userDataURL,String userId) throws IOException {
 
         MediaType MEDIA_TYPE = MediaType.parse("application/json");
 
@@ -80,12 +65,7 @@ public class AddUser extends AppCompatActivity {
 
         JSONObject postdata = new JSONObject();
         try {
-            postdata.put("firstName", fnameStr);
-            postdata.put("secondName", lnameStr);
-            postdata.put("gender", genderStr);
-            postdata.put("age",ageStr);
-            postdata.put("weightKG",weightStr);
-            postdata.put("heightCM",heightStr);
+            postdata.put("bmiValue", userId);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -95,11 +75,10 @@ public class AddUser extends AppCompatActivity {
         RequestBody body = RequestBody.create(MEDIA_TYPE, postdata.toString());
 
         Request request = new Request.Builder()
-                .url(userDataURL)
+                .url(userDataURL + "/" + userId)
                 .post(body)
                 .header("Accept", "application/json")
                 .header("Content-Type", "application/json")
-
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -114,6 +93,7 @@ public class AddUser extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
 
                 String mMessage = response.body().string();
+                Toast.makeText(AddBMI.this, "Updated BMI!", Toast.LENGTH_SHORT).show();
             }
         });
     }
