@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                                 for (int i = 0; i < myResponse.length(); i++) {
                                     JSONObject object = myResponse.getJSONObject(i);
                                     String quote = object.getString("text");
-                                    quoteOfTheDay.setText(quote);
+                                    quoteOfTheDay.setText("Quote of the day: " + quote);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
