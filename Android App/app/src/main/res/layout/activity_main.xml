@@ -93,6 +93,7 @@
                     android:padding="16dp">
 
                     <ImageView
+                        android:id="@+id/workout"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/sport" />
