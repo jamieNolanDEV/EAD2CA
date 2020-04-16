@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,6 +20,7 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -59,29 +62,28 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    final String myResponse = response.body().string();
-                    try {
-                         jsonObj = new JSONObject(myResponse);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    MainActivity.this.runOnUiThread(new Runnable() {
+                try {
+                    final JSONArray myResponse = new JSONArray(response.body().string());
+                    runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                quoteOfTheDay.setText(jsonObj.get("text").toString());
+                                for (int i = 0; i < myResponse.length(); i++) {
+                                    JSONObject object = myResponse.getJSONObject(i);
+                                    String quote = object.getString("text");
+                                    quoteOfTheDay.setText(quote);
+                                }
                             } catch (JSONException e) {
-                                quoteOfTheDay.setText("No quote found!");
                                 e.printStackTrace();
                             }
                         }
                     });
+                } catch(JSONException e) {
+                    e.printStackTrace();
                 }
             }
         });
+
         BFI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("firstStart", false);
         editor.apply();
     }
-}
+
+
+
+    }
 
 
