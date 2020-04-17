@@ -1,13 +1,14 @@
 package com.example.fitnesspal;
 
 public class WorkoutDefine {
-    String workoutDuration, workoutDetails, calBurned, workoutDate;
+    String workoutDuration, workoutDetails, calBurned, workoutDate, id;
 
-    public WorkoutDefine(String workoutDuration, String workoutDetails, String calBurned, String workoutDate) {
+    public WorkoutDefine(String workoutDuration, String workoutDetails, String calBurned, String workoutDate, String id) {
         this.workoutDuration = workoutDuration;
         this.workoutDetails = workoutDetails;
         this.calBurned = calBurned;
         this.workoutDate = workoutDate;
+        this.id = id;
     }
 
     public String getWorkoutDuration() {
@@ -42,4 +43,11 @@ public class WorkoutDefine {
         this.workoutDate = workoutDate;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

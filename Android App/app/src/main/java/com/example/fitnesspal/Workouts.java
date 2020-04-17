@@ -49,6 +49,7 @@ public class Workouts extends AppCompatActivity {
             public void onItemClick(int position) {
                 WorkoutDefine workoutItem = workoutListDefined.get(position);
                 Intent intent = new Intent(Workouts.this, viewworkout.class);
+                intent.putExtra("id",workoutItem.getId());
                 intent.putExtra("description",workoutItem.getWorkoutDetails());
                 intent.putExtra("duration",workoutItem.getWorkoutDuration());
                 intent.putExtra("calburned",workoutItem.getCalBurned());
@@ -87,12 +88,12 @@ public class Workouts extends AppCompatActivity {
                                     childObj = details.getJSONArray("workouts");
 
                                     JSONObject result = childObj.getJSONObject(i);
-
+                                    String id = result.getString("id");
                                     String WorkoutDetails = result.getString("workoutDetails");
                                     String WorkoutDuration = result.getString("workoutDuration");
                                     String caloriesBurned = result.getString("caloriesBurned");
                                     String WorkOutDate = result.getString("date");
-                                    WorkoutDefine w = new WorkoutDefine(WorkoutDuration, WorkoutDetails, caloriesBurned, WorkOutDate);
+                                    WorkoutDefine w = new WorkoutDefine(WorkoutDuration, WorkoutDetails, caloriesBurned, WorkOutDate,id);
                                     workoutListDefined.add(w);
                                     adapter.notifyDataSetChanged();
                                     Log.d("abccc", workoutListDefined.get(i).getWorkoutDate());
