@@ -4,9 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -16,26 +19,57 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     private List<String> mData;
     private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
     private ArrayList<WorkoutDefine> workouts;
-    // data is passed into the constructor
+    private OnItemClickListener workoutListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        workoutListener = listener;
+    }
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView myTextView;
+
+        public ViewHolder(@NotNull View itemView, final OnItemClickListener listener) {
+            super(itemView);
+            myTextView = itemView.findViewById(R.id.workoutname);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+
+                        }
+                    }
+                }
+            });
+
+
+        }
+
+    }
     MyRecyclerViewAdapter(Context context, ArrayList<WorkoutDefine> workouts) {
         this.mInflater = LayoutInflater.from(context);
         this.workouts = workouts;
     }
 
-    // inflates the row layout from xml when needed
+
+    @NotNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.workoutitem,parent,false);
+    public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.workoutitem, parent, false);
         //View view = mInflater.inflate(R.layout.activity_workouts, parent, false);
-        ViewHolder vh = new ViewHolder(view);
+        ViewHolder vh = new ViewHolder(view, workoutListener);
         return vh;
     }
 
     // binds the data to the TextView in each row
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull ViewHolder holder, int position) {
         holder.myTextView.setText(workouts.get(position).getWorkoutDate());
     }
 
@@ -47,20 +81,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
-
-        ViewHolder(View itemView) {
-            super(itemView);
-            myTextView = itemView.findViewById(R.id.workoutname);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-        }
-    }
 
     // convenience method for getting data at click position
     String getItem(int id) {
@@ -68,12 +88,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
 
     // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
 }

@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,8 +28,6 @@ public class Workouts extends AppCompatActivity {
     private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
     public static final String SHARED_PREFS = "sharedPrefs";
 
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
     ArrayList<String> workoutList = new ArrayList<>();
     ArrayList<WorkoutDefine> workoutListDefined = new ArrayList<>();
     String arm = "Arm Workout";
@@ -40,13 +40,22 @@ public class Workouts extends AppCompatActivity {
         setContentView(R.layout.activity_workouts);
         loadData();
         getData();
-        Log.d("aaa", userId);
         RecyclerView recyclerView = findViewById(R.id.workoutlist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyRecyclerViewAdapter(this, workoutListDefined);
         recyclerView.setAdapter(adapter);
-
-
+        adapter.setOnItemClickListener(new MyRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                WorkoutDefine workoutItem = workoutListDefined.get(position);
+                Intent intent = new Intent(Workouts.this, viewworkout.class);
+                intent.putExtra("description",workoutItem.getWorkoutDetails());
+                intent.putExtra("duration",workoutItem.getWorkoutDuration());
+                intent.putExtra("calburned",workoutItem.getCalBurned());
+                intent.putExtra("date",workoutItem.getWorkoutDate());
+                startActivity(intent);
+            }
+        });
     }
 
     public void getData() {

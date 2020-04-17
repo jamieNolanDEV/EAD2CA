@@ -33,9 +33,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class addWorkout extends AppCompatActivity {
-    private String userId, workoutDuration, workoutDetails, caloriesBurned, isoDate;
+    private String userId, workoutDuration, workoutDetails, caloriesBurned, isoDate,day, month, year;
     public static final String SHARED_PREFS = "sharedPrefs";
-    EditText workoutDurationText, workoutDetailsText, caloriesBurnedText;
+    EditText workoutDurationText, workoutDetailsText, caloriesBurnedText, dayText, monthText, yearText;
     private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/WorkoutData";
     Button addWorkout;
     @Override
@@ -43,22 +43,25 @@ public class addWorkout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_workout);
         loadData();
-        Log.d("userId",userId);
-        TimeZone tz = TimeZone.getTimeZone("UTC");
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
-        df.setTimeZone(tz);
-        isoDate= df.format(new Date(2018,01,04,20,5,20));
         addWorkout = findViewById(R.id.add);
         workoutDurationText = findViewById(R.id.wDuration);
         workoutDetailsText = findViewById(R.id.wDescription);
         caloriesBurnedText = findViewById(R.id.calBurned);
+        dayText = findViewById(R.id.Day);
+        monthText = findViewById(R.id.Month);
+        yearText = findViewById(R.id.Year);
+
+
+
         addWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 workoutDuration = workoutDurationText.getText().toString();
                 workoutDetails = workoutDetailsText.getText().toString();
                 caloriesBurned = caloriesBurnedText.getText().toString();
-
+                day = dayText.getText().toString();
+                month = monthText.getText().toString();
+                year = yearText.getText().toString();
                 Intent intent = new Intent(addWorkout.this, MainActivity.class);
                 try {
                     postRequest(userDataURL);
@@ -79,7 +82,7 @@ public class addWorkout extends AppCompatActivity {
 
         JSONObject postdata = new JSONObject();
         try {
-            postdata.put("date", isoDate);
+            postdata.put("date", "2020-10-10");
             postdata.put("workoutDuration", workoutDuration);
             postdata.put("workoutDetails", workoutDetails);
             postdata.put("caloriesBurned", caloriesBurned);
