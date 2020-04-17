@@ -87,6 +87,10 @@ public class addWorkout extends AppCompatActivity {
             postdata.put("workoutDetails", workoutDetails);
             postdata.put("caloriesBurned", caloriesBurned);
             postdata.put("userID", userId);
+            Log.d("useridposted", userId);
+            Log.d("workoutDuration", workoutDuration);
+            Log.d("workoutDetails", workoutDetails);
+            Log.d("caloriesBurned", caloriesBurned);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -96,8 +100,8 @@ public class addWorkout extends AppCompatActivity {
         RequestBody body = RequestBody.create(MEDIA_TYPE, postdata.toString());
 
         Request request = new Request.Builder()
-                .url(userDataURL+"/"+userId)
-                .put(body)
+                .url(userDataURL)
+                .post(body)
                 .header("Accept", "application/json")
                 .header("Content-Type", "application/json")
 
