@@ -36,7 +36,8 @@ public class AddUser extends AppCompatActivity {
     ArrayList<String> userIdJSON = new ArrayList<String>();
     private RadioGroup genderGroup;
     private RadioButton gender;
-    String fnameStr, lnameStr, ageStr, heightStr, weightStr, genderStr,  id;
+    String fnameStr, lnameStr, ageStr, heightStr, weightStr, genderStr,  id,realId;
+    int IdInt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +71,9 @@ public class AddUser extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 getData();
+                IdInt = IdInt +1;
+                realId = String.valueOf(IdInt);
+                id = realId;
                 saveData();
                 Intent intent = new Intent(AddUser.this, MainActivity.class);
                 intent.putExtra("id", id);
@@ -120,12 +124,16 @@ public class AddUser extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    final JSONObject getasObj = new JSONObject(response.body().string());
+                    Log.d("JSONOBJ", getasObj.getString("firstName"));
 
-                String mMessage = response.body().string();
-                Log.d("response",mMessage);
-
+                } catch(JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
+
     }
     public void getData(){
 
@@ -150,7 +158,8 @@ public class AddUser extends AppCompatActivity {
                             try {
                                 for (int i = 0; i < myResponse.length(); i++) {
                                     JSONObject object = myResponse.getJSONObject(i);
-                                     id = object.getString("id");
+                                    id = object.getString("id");
+                                    IdInt = Integer.parseInt(id);
                                     Log.d("testId", id);
                                 }
                             } catch (JSONException e) {

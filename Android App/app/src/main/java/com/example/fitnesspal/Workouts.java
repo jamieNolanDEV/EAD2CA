@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,16 +31,25 @@ public class Workouts extends AppCompatActivity {
 
     ArrayList<String> workoutList = new ArrayList<>();
     ArrayList<WorkoutDefine> workoutListDefined = new ArrayList<>();
-    String arm = "Arm Workout";
     private String date, workoutDuration, workoutDetails, caloriesBurned,userId;
     MyRecyclerViewAdapter adapter;
+    Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workouts);
+        back = findViewById(R.id.back);
+
         loadData();
         getData();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Workouts.this, MainActivity.class));
+            }
+        });
+
         RecyclerView recyclerView = findViewById(R.id.workoutlist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyRecyclerViewAdapter(this, workoutListDefined);

@@ -48,6 +48,13 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
+            <Button
+                android:id="@+id/back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Back"
+                android:background="@drawable/rounded"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/workoutlist"
@@ -60,4 +67,5 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>
