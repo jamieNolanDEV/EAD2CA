@@ -56,7 +56,7 @@
             android:layout_marginRight="30dp"
             android:orientation="vertical">
 
-            <TextView
+            <EditText
                 android:id="@+id/duration"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
@@ -71,7 +71,7 @@
                 android:textColorHint="@color/colorPrimaryDark"/>
 
 
-            <TextView
+            <EditText
                 android:id="@+id/calburned"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
@@ -85,7 +85,7 @@
                 android:paddingRight="20dp"
                 android:textColorHint="@color/colorPrimaryDark"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/date"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
@@ -101,7 +101,7 @@
                 android:textColorHint="@color/colorPrimaryDark"/>
 
 
-            <TextView
+            <EditText
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
@@ -123,14 +123,14 @@
                 android:background="@drawable/rounded"/>
 
             <Button
-                android:id="@+id/delete"
+                android:id="@+id/updateWorkout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Delete Workout"
+                android:text="Update Workout"
                 android:background="@drawable/rounded"/>
             <Button
-                android:id="@+id/updateWorkout"
+                android:id="@+id/delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -25,7 +26,7 @@ import okhttp3.Response;
 
 public class viewworkout extends AppCompatActivity {
     String duration, date, calburned, description, id,userId;
-    TextView durationTXT, dateTXT, calburnedTXT, descriptionTXT;
+    EditText durationTXT, dateTXT, calburnedTXT, descriptionTXT;
     private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/WorkoutData";
     public static final String SHARED_PREFS = "sharedPrefs";
 
@@ -52,6 +53,7 @@ public class viewworkout extends AppCompatActivity {
         calburnedTXT.setText(calburned);
         descriptionTXT.setText(description);
         Log.d("id",id);
+        Log.d("userId",userId);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +95,8 @@ public class viewworkout extends AppCompatActivity {
 
                         }
                     });
+                    Intent intent = new Intent(viewworkout.this, Workouts.class);
+                    startActivity(intent);
                 }
 
 
@@ -101,6 +105,10 @@ public class viewworkout extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                date = dateTXT.getText().toString();
+                duration = durationTXT.getText().toString();
+                description = descriptionTXT.getText().toString();
+                calburned = calburnedTXT.getText().toString();
                 MediaType MEDIA_TYPE = MediaType.parse("application/json");
 
                 OkHttpClient client = new OkHttpClient();
@@ -145,7 +153,10 @@ public class viewworkout extends AppCompatActivity {
 
                         }
                     });
-                }
+                Intent intent = new Intent(viewworkout.this, Workouts.class);
+                startActivity(intent);
+
+            }
 
 
 
