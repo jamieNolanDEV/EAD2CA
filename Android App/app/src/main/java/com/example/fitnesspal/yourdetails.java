@@ -18,8 +18,10 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class  yourdetails extends AppCompatActivity {
@@ -43,6 +45,75 @@ public class  yourdetails extends AppCompatActivity {
         update = findViewById(R.id.update);
         back = findViewById(R.id.back);
         getData();
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaType MEDIA_TYPE = MediaType.parse("application/json");
+                firstname = firstNameTXT.getText().toString();
+                secondname = secondNameTXT.getText().toString();
+                age = ageTXT.getText().toString();
+                weightKG = weightTXT.getText().toString();
+                heightCM = heightTXT.getText().toString();
+                OkHttpClient client = new OkHttpClient();
+
+                JSONObject postdata = new JSONObject();
+                try {
+                    postdata.put("id", userId);
+                    postdata.put("firstName", firstname);
+                    postdata.put("secondName", secondname);
+                    postdata.put("age",age);
+                    postdata.put("gender","Male");
+                    postdata.put("weightKG",weightKG);
+                    postdata.put("heightCM",heightCM);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                RequestBody body = RequestBody.create(MEDIA_TYPE, postdata.toString());
+
+                Request request = new Request.Builder()
+                        .url(userDataURL+"/"+userId)
+                        .put(body)
+                        .header("Accept", "application/json")
+                        .header("Content-Type", "application/json")
+
+                        .build();
+
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        String mMessage = e.getMessage().toString();
+                        Log.w("failure Response", mMessage);
+                        //call.cancel();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                        String mMessage = response.body().string();
+                        Log.d("response",mMessage);
+
+                    }
+                });
+                Intent intent = new Intent(yourdetails.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+
+
+
+        });
+
+
+
+
+
+
+
+
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
