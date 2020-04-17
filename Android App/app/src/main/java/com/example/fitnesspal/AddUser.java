@@ -40,7 +40,7 @@ public class AddUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userId="1";
+        userId="";
         setContentView(R.layout.activity_add_user);
         Confirm = findViewById(R.id.add);
         age = findViewById(R.id.age);

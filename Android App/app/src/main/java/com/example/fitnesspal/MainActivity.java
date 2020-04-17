@@ -23,7 +23,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView BFI,BMI, AddWorkout, Workouts;
+    private ImageView BFI,BMI, AddWorkout, Workouts,yourdetails;
     private TextView quoteOfTheDay;
     public static final String SHARED_PREFS = "sharedPrefs";
 
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         BMI = findViewById(R.id.bmi);
         Workouts = findViewById(R.id.workout);
         AddWorkout = findViewById(R.id.addWorkout);
+        yourdetails = findViewById(R.id.details);
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         boolean firstStart = prefs.getBoolean("firstStart", true);
         if (firstStart) {
@@ -111,6 +112,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Workouts.class));
+            }
+        });
+        yourdetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, yourdetails.class));
             }
         });
 

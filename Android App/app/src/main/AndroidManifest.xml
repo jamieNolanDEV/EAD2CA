@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".viewworkout"></activity>
+        <activity android:name=".yourdetails"></activity>
+        <activity android:name=".viewworkout" />
         <activity android:name=".Workouts" />
         <activity android:name=".addWorkout" />
         <activity android:name=".UpdateWeight" />
