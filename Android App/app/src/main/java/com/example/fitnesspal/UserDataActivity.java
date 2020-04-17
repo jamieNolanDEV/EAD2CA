@@ -114,7 +114,7 @@ public class UserDataActivity extends AppCompatActivity {
     }
     public void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        userId = sharedPreferences.getString("userId", "");
+        userId = sharedPreferences.getString("id", "");
     }
 
 

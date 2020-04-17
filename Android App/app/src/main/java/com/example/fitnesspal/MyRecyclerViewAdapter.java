@@ -17,31 +17,32 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private List<String> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
-
+    private ArrayList<WorkoutDefine> workouts;
     // data is passed into the constructor
-    MyRecyclerViewAdapter(Context context, List<String> data) {
+    MyRecyclerViewAdapter(Context context, ArrayList<WorkoutDefine> workouts) {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+        this.workouts = workouts;
     }
 
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.activity_workouts, parent, false);
-        return new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.workoutitem,parent,false);
+        //View view = mInflater.inflate(R.layout.activity_workouts, parent, false);
+        ViewHolder vh = new ViewHolder(view);
+        return vh;
     }
 
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String workoutname = mData.get(position);
-        holder.myTextView.setText(workoutname);
+        holder.myTextView.setText(workouts.get(position).getWorkoutDate());
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return mData.size();
+        return workouts.size();
     }
 
 

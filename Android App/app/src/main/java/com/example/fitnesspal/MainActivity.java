@@ -10,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.SharedPreferences;
 
-import com.google.gson.Gson;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +18,6 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -37,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadData();
+
         BFI = findViewById(R.id.BFI);
         BMI = findViewById(R.id.bmi);
         Workouts = findViewById(R.id.workout);
@@ -47,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
             setStarted();
             startActivity(new Intent(MainActivity.this, AddUser.class));
         }
+
+        Log.d("name", userId);
+
 
         quoteOfTheDay = findViewById(R.id.quote);
         OkHttpClient client = new OkHttpClient();
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                                     String quote = object.getString("text");
                                     quoteOfTheDay.setText("Quote of the day: " + quote);
                                 }
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -87,13 +90,15 @@ public class MainActivity extends AppCompatActivity {
         BFI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddBMR.class));
+                Intent intent = new Intent(MainActivity.this, ViewBMI.class);
+                startActivity(intent);
             }
         });
         BMI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddBMI.class));
+                Intent intent = new Intent(MainActivity.this, ViewBMI.class);
+                startActivity(intent);
             }
         });
         AddWorkout.setOnClickListener(new View.OnClickListener() {
@@ -110,9 +115,45 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    public void getData(){
+
+        OkHttpClient client = new OkHttpClient();
+        String url = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    final JSONArray myResponse = new JSONArray(response.body().string());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                for (int i = 0; i < myResponse.length(); i++) {
+                                    JSONObject object = myResponse.getJSONObject(i);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } catch(JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
     public void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        userId = sharedPreferences.getString("userId", "");
+        userId = sharedPreferences.getString("id", "");
     }
 
     private void setStarted() {

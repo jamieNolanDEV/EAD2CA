@@ -47,20 +47,56 @@
             android:layout_marginRight="30dp"
             android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
             <EditText
-                android:id="@+id/wDate"
-                android:layout_width="match_parent"
+                android:id="@+id/Day"
+                android:layout_width="wrap_content"
                 android:layout_height="38dp"
                 android:textColor="@color/colorPrimaryDark"
+                android:layout_weight="1"
                 android:background="@color/colorWhite"
-                android:hint="Date"
+                android:hint="Day"
                 android:inputType="text"
 
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:textColorHint="@color/colorPrimaryDark"/>
+            <EditText
+                android:id="@+id/Month"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="38dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/colorWhite"
+                android:hint="Month"
+                android:inputType="text"
 
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorPrimaryDark"/>
+            <EditText
+                android:id="@+id/Year"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/colorWhite"
+                android:hint="Year"
+                android:inputType="text"
+
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorPrimaryDark"/>
+        </LinearLayout>
 
             <EditText
                 android:id="@+id/wDuration"
@@ -93,7 +129,7 @@
 
 
             <EditText
-                android:id="@+id/weight"
+                android:id="@+id/wDescription"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 android:layout_marginTop="10dp"
@@ -112,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Begin"
+                android:text="Add Workout!"
                 android:background="@drawable/rounded"/>
 
 

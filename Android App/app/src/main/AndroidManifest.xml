@@ -15,10 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Workouts"></activity>
+        <activity android:name=".viewworkout"></activity>
+        <activity android:name=".Workouts" />
         <activity android:name=".addWorkout" />
-        <activity android:name=".AddBMR" />
-        <activity android:name=".AddBMI" />
+        <activity android:name=".UpdateWeight" />
+        <activity android:name=".ViewBMI" />
         <activity android:name=".AddUser" />
         <activity android:name=".UserDataActivity" />
         <activity android:name=".MainActivity">

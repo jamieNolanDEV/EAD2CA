@@ -36,7 +36,7 @@ public class AddUser extends AppCompatActivity {
     ArrayList<String> userIdJSON = new ArrayList<String>();
     private RadioGroup genderGroup;
     private RadioButton gender;
-    String fnameStr, lnameStr, ageStr, heightStr, weightStr, genderStr;
+    String fnameStr, lnameStr, ageStr, heightStr, weightStr, genderStr,  id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +48,7 @@ public class AddUser extends AppCompatActivity {
         lname = findViewById(R.id.lname);
         height = findViewById(R.id.height);
         weight = findViewById(R.id.weight);
-
+        getData();
         Confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,8 +69,10 @@ public class AddUser extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                getData();
+                saveData();
                 Intent intent = new Intent(AddUser.this, MainActivity.class);
-
+                intent.putExtra("id", id);
                 startActivity(intent);
 
             }
@@ -120,13 +122,53 @@ public class AddUser extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
 
                 String mMessage = response.body().string();
+                Log.d("response",mMessage);
+
             }
         });
+    }
+    public void getData(){
+
+        OkHttpClient client = new OkHttpClient();
+        String url = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    final JSONArray myResponse = new JSONArray(response.body().string());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                for (int i = 0; i < myResponse.length(); i++) {
+                                    JSONObject object = myResponse.getJSONObject(i);
+                                     id = object.getString("id");
+                                    Log.d("testId", id);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } catch(JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
     public void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("userId", userId);
+        editor.putString("id", id);
         editor.apply();
 
     }
@@ -136,7 +178,7 @@ public class AddUser extends AppCompatActivity {
 
     public void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        userId = sharedPreferences.getString("userId", "");
+        userId = sharedPreferences.getString("id", "");
     }
 
 

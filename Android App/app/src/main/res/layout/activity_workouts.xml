@@ -8,55 +8,56 @@
     android:background="@xml/mainback"
     android:orientation="vertical"
     tools:context=".Workouts">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@xml/mainback"
-        tools:context=".AddUser">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@xml/mainback"
+        android:orientation="vertical"
+        tools:context=".AddUser">
 
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/colab" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="Below are your workouts, keep it up!"
-            android:textColor="@color/colorWhite"
+            android:orientation="vertical">
 
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/liner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/colab" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Below are your workouts, keep it up!"
+                    android:textColor="@color/colorWhite"
+
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/workoutlist"
+                android:layout_width="407dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="10"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
 
     </LinearLayout>
-    </RelativeLayout>
-=        <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/workoutlist"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-        </RelativeLayout>
-
-    </LinearLayout>    </LinearLayout>
+</LinearLayout>
