@@ -70,7 +70,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(@NotNull ViewHolder holder, int position) {
-        holder.myTextView.setText(workouts.get(position).getWorkoutDate());
+        holder.myTextView.setText(workouts.get(position).getWorkoutDetails());
     }
 
     // total number of rows

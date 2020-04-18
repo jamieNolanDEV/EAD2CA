@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@xml/mainback"
-    tools:context=".viewworkout">
+    tools:context=".AddUser">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Your Workout!"
+                android:text="Your Stats"
                 android:textColor="@color/colorWhite"
 
                 android:textSize="22sp"
@@ -40,9 +40,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                android:text="Below is your workout."
+
                 android:textColor="@color/colorWhite"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -60,20 +60,7 @@
                 android:layout_height="20dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Duration"
-                android:inputType="text"
-
-                android:textSize="16sp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:textColorHint="@color/colorPrimaryDark"/>
-            <EditText
-                android:id="@+id/duration"
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="@color/colorWhite"
-                android:hint="duration"
+                android:hint="Calories Burnt Last 7 Days"
                 android:inputType="text"
 
                 android:textSize="16sp"
@@ -82,50 +69,38 @@
                 android:textColorHint="@color/colorPrimaryDark"/>
 
             <TextView
+                android:id="@+id/c7days"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="38dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Calories Burned"
                 android:inputType="text"
-                android:layout_marginTop="10dp"
 
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:textColorHint="@color/colorPrimaryDark"/>
-            <EditText
-                android:id="@+id/calburned"
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="@color/colorWhite"
-                android:hint="calburned"
-                android:inputType="text"
-                android:textSize="16sp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:textColorHint="@color/colorPrimaryDark"/>
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Date"
+                android:hint="Workout Time last 30 days"
                 android:inputType="text"
-                android:layout_marginTop="10dp"
-
+                android:layout_marginTop="30dp"
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:textColorHint="@color/colorPrimaryDark"/>
-            <EditText
-                android:id="@+id/date"
+
+            <TextView
+                android:id="@+id/w30days"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Date"
                 android:inputType="text"
                 android:layout_marginBottom="25dp"
                 android:textSize="16sp"
@@ -138,26 +113,76 @@
                 android:layout_height="20dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Description"
+                android:hint="Workout Time last 7 Days"
                 android:inputType="text"
-
 
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:textColorHint="@color/colorPrimaryDark"/>
-            <EditText
-                android:id="@+id/description"
+            <TextView
+                android:id="@+id/w7Days"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
+                android:layout_marginBottom="25dp"
                 android:background="@color/colorWhite"
-                android:hint="Description"
                 android:inputType="text"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="16sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/colorWhite"
+                android:hint="Calories Burnt Last 30 Days"
+                android:inputType="text"
+
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/c30Days"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/colorWhite"
+                android:inputType="text"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/colorWhite"
+                android:hint="Longest Workout"
+                android:inputType="text"
+
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/lWorkout"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/colorWhite"
+                android:inputType="text"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
 
             <Button
                 android:id="@+id/back"
@@ -167,20 +192,6 @@
                 android:text="Back"
                 android:background="@drawable/rounded"/>
 
-            <Button
-                android:id="@+id/updateWorkout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Update Workout"
-                android:background="@drawable/rounded"/>
-            <Button
-                android:id="@+id/delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Delete Workout"
-                android:background="@drawable/rounded"/>
 
             <TextView
                 android:layout_width="wrap_content"
