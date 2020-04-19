@@ -22,6 +22,7 @@
         <activity android:name=".addWorkout" />
         <activity android:name=".UpdateWeight" />
         <activity android:name=".ViewBMI" />
+        <activity android:name=".ViewBMR" />
         <activity android:name=".AddUser" />
         <activity android:name=".UserDataActivity" />
         <activity android:name=".MainActivity">
