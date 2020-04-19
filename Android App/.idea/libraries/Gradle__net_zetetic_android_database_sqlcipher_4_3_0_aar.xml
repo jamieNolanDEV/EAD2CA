@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: net.zetetic:android-database-sqlcipher:4.3.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/037697e606f4239dbc3f5ba53cc6c0a4/jetified-android-database-sqlcipher-4.3.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/037697e606f4239dbc3f5ba53cc6c0a4/jetified-android-database-sqlcipher-4.3.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e94f7eb0a7fc41e129763e3ef82028a2/jetified-android-database-sqlcipher-4.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e94f7eb0a7fc41e129763e3ef82028a2/jetified-android-database-sqlcipher-4.3.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

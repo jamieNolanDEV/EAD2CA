@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: "org.sonarqube"
 
 android {
     compileSdkVersion 29
@@ -21,6 +22,22 @@ android {
         }
     }
 
+}
+sonarqube {
+    properties {
+        property "sonar.projectName", "FitnessTracker"
+        property "sonar.projectKey", "FitnessTracker"
+        property "sonar.login", "532a575f6d4a1e0ca5c233a4ec94dfa771711be0"
+        property "sonar.tests", ["src/test/java"]
+        property "sonar.test.inclusions", "**/*Test*/**"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.sources", "src/main/java"
+        property "sonar.exclusions", '**/*Test*/**,' +
+                '*.json,' +
+                '**/*test*/**,' +
+                '**/.gradle/**,' +
+                '**/R.class'
+    }
 }
 
 
