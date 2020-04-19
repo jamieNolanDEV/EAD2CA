@@ -35,7 +35,7 @@ public class ViewBMR extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_add_b_m_r);
+        setContentView(R.layout.activity_viewbmr);
         loadData();
         BMRTEXT = findViewById(R.id.bmr);
         Confirm = findViewById(R.id.addbmr);
