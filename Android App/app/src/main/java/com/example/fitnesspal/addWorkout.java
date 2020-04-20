@@ -82,7 +82,7 @@ public class addWorkout extends AppCompatActivity {
 
         JSONObject postdata = new JSONObject();
         try {
-            postdata.put("date", day+"-"+month+"-"+year);
+            postdata.put("date", year+"-"+month+"-"+day);
             postdata.put("workoutDuration", workoutDuration);
             postdata.put("workoutDetails", workoutDetails);
             postdata.put("caloriesBurned", caloriesBurned);
