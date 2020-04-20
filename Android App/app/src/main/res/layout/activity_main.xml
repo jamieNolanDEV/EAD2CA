@@ -29,7 +29,7 @@
 
             <TextView
                 android:id="@+id/headerDashboard"
-                android:text="@string/headerMain"
+                android:text="Welcome to Fitness Tracker"
                 android:textSize="22sp"
                 android:textColor="#FFFFFF"
                 android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
             <TextView
                 android:layout_marginTop="40dp"
                 android:id="@+id/quote"
-                android:text="@string/quote"
+                android:text="Quote of the day goes here"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
                 android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:text="@string/viewBMR"
+                        android:text="View BMR"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -110,7 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/workout"
+                        android:text="Workout"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -141,7 +141,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/viewbmi"
+                        android:text="View BMI"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -172,7 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/newWork"
+                        android:text="New Workouts"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -203,7 +203,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/details"
+                        android:text="Your Details"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -234,7 +234,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/stats"
+                        android:text="Your Stats"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>

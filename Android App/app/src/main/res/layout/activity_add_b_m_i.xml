@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@xml/mainback"
-    tools:context=".ViewBMI">
+    tools:context=".AddUser">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Your BMI!"
+                android:text="Update your Weight here!"
                 android:textColor="@color/colorWhite"
 
                 android:textSize="22sp"
@@ -40,8 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                android:text="The body mass index (BMI) is a measure that uses your height and weight to work out if your weight is healthy.
-"
+                android:text="This will help us calculate your BMI and BMR results!"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -57,14 +56,14 @@
             android:layout_marginRight="30dp"
             android:orientation="vertical">
 
-            <TextView
+            <EditText
                 android:id="@+id/bmi"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="25dp"
                 android:background="@color/colorWhite"
-                android:hint="Your BMI"
+                android:hint="Your Weight"
                 android:inputType="text"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
@@ -75,11 +74,11 @@
 
 
             <Button
-                android:id="@+id/back"
+                android:id="@+id/addbmi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Back"
+                android:text="Update Weight"
                 android:background="@drawable/rounded"/>
 
 
