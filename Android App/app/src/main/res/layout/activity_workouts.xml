@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="Below are your workouts, keep it up!"
+                    android:text="@string/workoutHead"
                     android:textColor="@color/colorWhite"
 
                     android:textSize="22sp"
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Back"
+                android:text="@string/back"
                 android:background="@drawable/rounded"/>
 
             <androidx.recyclerview.widget.RecyclerView

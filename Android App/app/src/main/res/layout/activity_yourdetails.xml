@@ -138,7 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Back"
+                android:text="@string/back"
                 android:background="@drawable/rounded"/>
 
             <Button
@@ -146,14 +146,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Update"
+                android:text="@string/update"
                 android:background="@drawable/rounded"/>
             <Button
                 android:id="@+id/delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Delete"
+                android:text="@string/delete"
                 android:background="@drawable/rounded"/>
 
             <TextView

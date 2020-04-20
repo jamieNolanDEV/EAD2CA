@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="This is your BMR!"
+                android:text="@string/bmrhead"
                 android:textColor="@color/colorWhite"
 
                 android:textSize="22sp"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                android:text="BMR is a minimum number of calories required for basic functions at rest"
+                android:text="@string/bmr"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -77,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Back"
+                android:text="@string/back"
                 android:background="@drawable/rounded"/>
 
 
