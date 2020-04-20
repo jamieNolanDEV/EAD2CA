@@ -161,7 +161,7 @@ public class  yourdetails extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
         String url = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
         Request request = new Request.Builder()
-                .url(url)
+                .url(userDataURL+"/"+userId)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -172,25 +172,19 @@ public class  yourdetails extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 try {
-                    final JSONArray myResponse = new JSONArray(response.body().string());
+                    final JSONObject myResponse = new JSONObject(response.body().string());
+                    firstname = myResponse.getString("firstName");
+                    secondname = myResponse.getString("secondName");
+                    age = myResponse.getString("age");
+                    weightKG = myResponse.getString("weightKG");
+                    heightCM = myResponse.getString("heightCM");
+                    Log.d("testId", firstname);
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            try {
-                                for (int i = 0; i < myResponse.length(); i++) {
-                                    JSONObject object = myResponse.getJSONObject(i);
-                                    firstname = object.getString("firstName");
-                                    secondname = object.getString("secondName");
-                                    age = object.getString("age");
-                                    weightKG = object.getString("weightKG");
-                                    heightCM = object.getString("heightCM");
-                                    Log.d("testId", firstname);
-                                }
                                 updateUI(firstname,secondname,age,weightKG,heightCM);
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
                         }
                     });
                 } catch(JSONException e) {
