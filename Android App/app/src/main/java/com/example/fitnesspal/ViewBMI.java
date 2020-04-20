@@ -25,12 +25,12 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ViewBMI extends AppCompatActivity {
-    private TextView BMITEXT;
+    private TextView BMITEXT, BMICAT;
     public static final String SHARED_PREFS = "sharedPrefs";
     private String userDataURL = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
     private Button Confirm;
     private String userId;
-    String bmi;
+    String bmi, category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,7 @@ public class ViewBMI extends AppCompatActivity {
         setContentView(R.layout.activity_viewbmi);
         loadData();
         BMITEXT = findViewById(R.id.bmi);
+        BMICAT = findViewById(R.id.bmicat);
         Confirm = findViewById(R.id.back);
 
 
@@ -59,13 +60,14 @@ public class ViewBMI extends AppCompatActivity {
                     JSONObject details = new JSONObject(responseStr);
                     for (int i = 0; i < details.length(); i++) {
                         bmi = details.getString("bmiValue");
+                        category = details.getString("bmiCategory");
                     }
                     runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
 
-                            updateUI(bmi);
+                            updateUI(bmi, category);
 
                         }
                     });
@@ -91,8 +93,9 @@ public class ViewBMI extends AppCompatActivity {
 
 
     }
-    void updateUI(String bmi){
+    void updateUI(String bmi, String cat){
         BMITEXT.setText(bmi);
+        BMICAT.setText(cat);
     }
 
     public void loadData() {
