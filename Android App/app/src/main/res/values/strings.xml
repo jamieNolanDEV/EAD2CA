@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">FitnessPal</string>
+    <string name="app_name" translatable="false">FitnessPal</string>
+    <string name="bmr">BMR is a minimum number of calories required for basic functions at rest</string>
+    <string name="bmrhead">This is your BMR</string>
+    <string name="back">Back</string>
+    <string name="bmidetail">The body mass index (BMI) is a measure that uses your height and weight to work out if your weight is healthy.</string>
+    <string name="bmiHead">This is your BMI</string>
+    <string name="workoutHead"> Below are your workouts, keep it up!</string>
+    <string name="Duration">Duration</string>
+    <string name="calburn">Calories Burnt</string>
+    <string name="desc">Description</string>
+    <string name="date">Date</string>
+    <string name="delete">Delete Workout</string>
+    <string name="update">Update Workout</string>
+    <string name="viewBMR">View BMR</string>
+    <string name="workout">Workouts</string>
+    <string name="viewbmi">View BMI</string>
+    <string name="newWork">Add Workout</string>
+    <string name="details">Your Details</string>
+    <string name="stats">Your Stats</string>
+    <string name="headerMain">"Welcome to Fitness Tracker "</string>
+    <string name="quote">Quote of the day goes here</string>
+
 </resources>

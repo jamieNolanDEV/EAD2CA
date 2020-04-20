@@ -20,11 +20,9 @@
         <activity android:name=".viewworkout" />
         <activity android:name=".Workouts" />
         <activity android:name=".addWorkout" />
-        <activity android:name=".UpdateWeight" />
         <activity android:name=".ViewBMI" />
         <activity android:name=".ViewBMR" />
         <activity android:name=".AddUser" />
-        <activity android:name=".UserDataActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

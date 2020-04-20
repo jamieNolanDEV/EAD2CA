@@ -73,7 +73,7 @@
                 android:layout_height="38dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="duration"
+                android:hint="@string/Duration"
                 android:inputType="text"
 
                 android:textSize="16sp"
@@ -86,7 +86,7 @@
                 android:layout_height="20dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Calories Burned"
+                android:hint="@string/calburn"
                 android:inputType="text"
                 android:layout_marginTop="10dp"
 
@@ -111,7 +111,7 @@
                 android:layout_height="20dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Date"
+                android:hint="@string/date"
                 android:inputType="text"
                 android:layout_marginTop="10dp"
 
@@ -138,7 +138,7 @@
                 android:layout_height="20dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Description"
+                android:hint="@string/desc"
                 android:inputType="text"
 
 
@@ -164,7 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Back"
+                android:text="@string/back"
                 android:background="@drawable/rounded"/>
 
             <Button
@@ -172,14 +172,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Update Workout"
+                android:text="@string/update"
                 android:background="@drawable/rounded"/>
             <Button
                 android:id="@+id/delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Delete Workout"
+                android:text="@string/delete"
                 android:background="@drawable/rounded"/>
 
             <TextView

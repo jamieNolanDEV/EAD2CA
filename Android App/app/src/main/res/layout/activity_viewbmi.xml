@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Your BMI!"
+                android:text="@string/bmiHead"
                 android:textColor="@color/colorWhite"
 
                 android:textSize="22sp"
@@ -40,8 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                android:text="The body mass index (BMI) is a measure that uses your height and weight to work out if your weight is healthy.
-"
+                android:text="@string/bmidetail"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -79,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Back"
+                android:text="@string/back"
                 android:background="@drawable/rounded"/>
 
 
