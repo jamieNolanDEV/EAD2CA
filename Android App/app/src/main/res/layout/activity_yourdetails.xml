@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Your Details!"
+                android:text="@string/details"
                 android:textColor="@color/colorWhite"
 
                 android:textSize="22sp"
@@ -41,7 +41,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
 
-                android:text="You can update your details by modifying the text boxes below."
+                android:text="@string/detailsMore"
                 android:textColor="@color/colorWhite"
                 android:textSize="12sp"
                 android:textStyle="bold" />

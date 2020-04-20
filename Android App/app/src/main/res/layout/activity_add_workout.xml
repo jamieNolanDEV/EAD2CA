@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Add your workout details below!"
+                android:text="@string/addWorkout"
                 android:textColor="@color/colorWhite"
 
                 android:textSize="22sp"
@@ -61,7 +61,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
-                android:hint="Day"
+                android:hint="@string/day"
                 android:inputType="text"
 
                 android:textSize="16sp"
@@ -75,7 +75,8 @@
                 android:layout_height="38dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Month"
+                android:hint="@string/month"
+
                 android:inputType="text"
 
                 android:textSize="16sp"
@@ -89,7 +90,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Year"
+                android:hint="@string/year"
                 android:inputType="text"
 
                 android:textSize="16sp"
@@ -104,7 +105,7 @@
                 android:layout_height="38dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Duration of your workout"
+                android:hint="@string/Duration"
                 android:inputType="text"
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"
@@ -119,7 +120,7 @@
                 android:layout_height="38dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Calories Burned"
+                android:hint="@string/calburn"
                 android:inputType="text"
                 android:layout_marginBottom="25dp"
                 android:textSize="16sp"
@@ -135,7 +136,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="25dp"
                 android:background="@color/colorWhite"
-                android:hint="Workout description!"
+                android:hint="@string/desc"
                 android:inputType="text"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
@@ -148,7 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Add Workout!"
+                android:text="@string/newWork"
                 android:background="@drawable/rounded"/>
 
 
