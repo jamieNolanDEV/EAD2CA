@@ -22,6 +22,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 public class MainActivity extends AppCompatActivity {
     private ImageView BFI,BMI, AddWorkout, Workouts,yourdetails,stats;
     private TextView quoteOfTheDay;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        userId = getIntent().getStringExtra("id");
         loadData();
 
         BFI = findViewById(R.id.BFI);
@@ -166,7 +169,13 @@ public class MainActivity extends AppCompatActivity {
     }
     public void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        userId = sharedPreferences.getString("id", "");
+        if(userId != NULL) {
+            userId = sharedPreferences.getString("id", "");
+        }else{
+            Log.d("ERROR","ERROR!");
+            userId = getIntent().getStringExtra("id");
+
+        }
     }
 
     private void setStarted() {

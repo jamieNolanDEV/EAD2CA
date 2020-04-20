@@ -49,7 +49,6 @@ public class AddUser extends AppCompatActivity {
         lname = findViewById(R.id.lname);
         height = findViewById(R.id.height);
         weight = findViewById(R.id.weight);
-        getData();
         Confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,14 +69,6 @@ public class AddUser extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                getData();
-                IdInt = IdInt +1;
-                realId = String.valueOf(IdInt);
-                id = realId;
-                saveData();
-                Intent intent = new Intent(AddUser.this, MainActivity.class);
-                intent.putExtra("id", id);
-                startActivity(intent);
 
             }
         });
@@ -125,71 +116,45 @@ public class AddUser extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 try {
-                    final JSONObject getasObj = new JSONObject(response.body().string());
-                    Log.d("JSONOBJ", getasObj.getString("firstName"));
-
-                } catch(JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-    }
-    public void getData(){
-
-        OkHttpClient client = new OkHttpClient();
-        String url = "http://fitnessapi-dev.eu-west-1.elasticbeanstalk.com/api/UserData";
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    final JSONArray myResponse = new JSONArray(response.body().string());
+                    final JSONObject myResponse = new JSONObject(response.body().string());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                for (int i = 0; i < myResponse.length(); i++) {
-                                    JSONObject object = myResponse.getJSONObject(i);
-                                    id = object.getString("id");
-                                    IdInt = Integer.parseInt(id);
-                                    Log.d("testId", id);
-                                }
+                                id = myResponse.getString("id");
+
+                                saveData();
+                                Intent intent = new Intent(AddUser.this, MainActivity.class);
+                                intent.putExtra("id", id);
+                                startActivity(intent);
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
                     });
-                } catch(JSONException e) {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
             }
         });
-
-    }
-    public void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("id", id);
-        editor.apply();
-
     }
 
+            public void saveData() {
+                SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("id", id);
+                editor.apply();
+
+            }
 
 
+            public void loadData() {
+                SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                userId = sharedPreferences.getString("id", "");
+            }
 
-    public void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        userId = sharedPreferences.getString("id", "");
+
     }
 
-
-
-}
