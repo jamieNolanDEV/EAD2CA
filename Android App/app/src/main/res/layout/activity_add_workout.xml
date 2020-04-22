@@ -62,7 +62,8 @@
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
                 android:hint="@string/day"
-                android:inputType="text"
+                android:inputType="number"
+                android:maxLength="2"
 
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
@@ -76,8 +77,9 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
                 android:hint="@string/month"
+                android:maxLength="2"
 
-                android:inputType="text"
+                android:inputType="number"
 
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
@@ -91,7 +93,8 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
                 android:hint="@string/year"
-                android:inputType="text"
+                android:inputType="number"
+                android:maxLength="4"
 
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
@@ -106,7 +109,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
                 android:hint="@string/Duration"
-                android:inputType="text"
+                android:inputType="number"
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
@@ -121,7 +124,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
                 android:hint="@string/calburn"
-                android:inputType="text"
+                android:inputType="number"
                 android:layout_marginBottom="25dp"
                 android:textSize="16sp"
                 android:paddingLeft="20dp"

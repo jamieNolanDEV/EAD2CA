@@ -110,27 +110,28 @@ public class viewworkout extends AppCompatActivity {
                 description = descriptionTXT.getText().toString();
                 calburned = calburnedTXT.getText().toString();
                 MediaType MEDIA_TYPE = MediaType.parse("application/json");
+                if (!hasValidationErrors(duration, calburned, description)) {
 
-                OkHttpClient client = new OkHttpClient();
+                    OkHttpClient client = new OkHttpClient();
 
-                JSONObject postdata = new JSONObject();
-                try {
-                    postdata.put("id", id);
-                    postdata.put("date", date);
-                    postdata.put("workoutDuration", duration);
-                    postdata.put("workoutDetails",description);
-                    postdata.put("caloriesBurned",calburned);
-                    postdata.put("userID",userId);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                    JSONObject postdata = new JSONObject();
+                    try {
+                        postdata.put("id", id);
+                        postdata.put("date", date);
+                        postdata.put("workoutDuration", duration);
+                        postdata.put("workoutDetails", description);
+                        postdata.put("caloriesBurned", calburned);
+                        postdata.put("userID", userId);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
-                RequestBody body = RequestBody.create(MEDIA_TYPE, postdata.toString());
+                    RequestBody body = RequestBody.create(MEDIA_TYPE, postdata.toString());
 
                     Request request = new Request.Builder()
-                            .url(userDataURL+"/"+id)
+                            .url(userDataURL + "/" + id)
                             .put(body)
                             .header("Accept", "application/json")
                             .header("Content-Type", "application/json")
@@ -149,13 +150,16 @@ public class viewworkout extends AppCompatActivity {
                         public void onResponse(Call call, Response response) throws IOException {
 
                             String mMessage = response.body().string();
-                            Log.d("response",mMessage);
+                            Log.d("response", mMessage);
 
                         }
                     });
-                Intent intent = new Intent(viewworkout.this, Workouts.class);
-                startActivity(intent);
+                    Intent intent = new Intent(viewworkout.this, Workouts.class);
+                    startActivity(intent);
 
+                }else{
+
+                }
             }
 
 
@@ -170,6 +174,28 @@ public class viewworkout extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         userId = sharedPreferences.getString("id", "");
     }
+    private boolean hasValidationErrors(String duration, String calburned, String description) {
 
-    }
+        if (duration.isEmpty()) {
+            durationTXT.setError("Required");
+            durationTXT.requestFocus();
+            return true;
+        }
+        if (calburned.isEmpty()) {
+            calburnedTXT.setError("Required");
+            calburnedTXT.requestFocus();
+            return true;
+        }
+        if (description.isEmpty()) {
+            descriptionTXT.setError("Required");
+            descriptionTXT.requestFocus();
+            return true;
+        }
+
+        return false;
+
+    };
+
+
+}
 

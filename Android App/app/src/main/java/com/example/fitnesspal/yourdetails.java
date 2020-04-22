@@ -55,52 +55,56 @@ public class  yourdetails extends AppCompatActivity {
                 age = ageTXT.getText().toString();
                 weightKG = weightTXT.getText().toString();
                 heightCM = heightTXT.getText().toString();
-                OkHttpClient client = new OkHttpClient();
+                if (!hasValidationErrors(heightCM, age, weightKG, firstname, secondname)) {
+                    OkHttpClient client = new OkHttpClient();
 
-                JSONObject postdata = new JSONObject();
-                try {
-                    postdata.put("id", userId);
-                    postdata.put("firstName", firstname);
-                    postdata.put("secondName", secondname);
-                    postdata.put("age",age);
-                    postdata.put("gender","Male");
-                    postdata.put("weightKG",weightKG);
-                    postdata.put("heightCM",heightCM);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    JSONObject postdata = new JSONObject();
+                    try {
+                        postdata.put("id", userId);
+                        postdata.put("firstName", firstname);
+                        postdata.put("secondName", secondname);
+                        postdata.put("age", age);
+                        postdata.put("gender", "Male");
+                        postdata.put("weightKG", weightKG);
+                        postdata.put("heightCM", heightCM);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    RequestBody body = RequestBody.create(MEDIA_TYPE, postdata.toString());
+
+                    Request request = new Request.Builder()
+                            .url(userDataURL + "/" + userId)
+                            .put(body)
+                            .header("Accept", "application/json")
+                            .header("Content-Type", "application/json")
+
+                            .build();
+
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            String mMessage = e.getMessage().toString();
+                            Log.w("failure Response", mMessage);
+                            //call.cancel();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+
+                            String mMessage = response.body().string();
+                            Log.d("response", mMessage);
+
+                        }
+                    });
+                    Intent intent = new Intent(yourdetails.this, MainActivity.class);
+                    startActivity(intent);
+
+                }else{
+
                 }
-
-                RequestBody body = RequestBody.create(MEDIA_TYPE, postdata.toString());
-
-                Request request = new Request.Builder()
-                        .url(userDataURL+"/"+userId)
-                        .put(body)
-                        .header("Accept", "application/json")
-                        .header("Content-Type", "application/json")
-
-                        .build();
-
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        String mMessage = e.getMessage().toString();
-                        Log.w("failure Response", mMessage);
-                        //call.cancel();
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-
-                        String mMessage = response.body().string();
-                        Log.d("response",mMessage);
-
-                    }
-                });
-                Intent intent = new Intent(yourdetails.this, MainActivity.class);
-                startActivity(intent);
-
             }
 
 
@@ -112,6 +116,12 @@ public class  yourdetails extends AppCompatActivity {
 
 
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(yourdetails.this, MainActivity.class));
+            }
+        });
 
 
 
@@ -206,6 +216,56 @@ public class  yourdetails extends AppCompatActivity {
         heightTXT.setText(height);
 
     }
+    private boolean hasValidationErrors(String heightin, String agein, String weightin, String fnameIn,  String lnameIn) {
+        if (fnameIn.isEmpty()) {
+            firstNameTXT.setError("Required");
+            firstNameTXT.requestFocus();
+            return true;
+        }
+        if (lnameIn.isEmpty()) {
+            secondNameTXT.setError("Required");
+            secondNameTXT.requestFocus();
+            return true;
+        }
+        if(!heightin.isEmpty() && !agein.isEmpty() && !weightin.isEmpty()) {
+            double heightDouble = Double.parseDouble(heightin);
+            int ageint = Integer.parseInt(agein);
+            double weightDouble = Double.parseDouble(weightin);
+            if (ageint <= 4 && ageint >= 111) {
+                ageTXT.setError("Required");
+                ageTXT.requestFocus();
+                return true;
+            }
+            if (heightDouble <= 5 && heightDouble >= 220) {
+                heightTXT.setError("Height must be between 5 and 220 CM");
+                heightTXT.requestFocus();
+                return true;
+            }
+            if (weightDouble <= 5 && weightDouble >= 150) {
+                weightTXT.setError("KG must be between 5 and 150");
+                weightTXT.requestFocus();
+                return true;
+            }
+        }
+        if (heightin.isEmpty()) {
+            heightTXT.setError("Required");
+            heightTXT.requestFocus();
+            return true;
+        }
+        if (agein.isEmpty()) {
+            ageTXT.setError("Required");
+            ageTXT.requestFocus();
+            return true;
+        }
+        if (weightin.isEmpty()) {
+            weightTXT.setError("Required");
+            weightTXT.requestFocus();
+            return true;
+        }
+
+        return false;
+
+    };
 
 
 

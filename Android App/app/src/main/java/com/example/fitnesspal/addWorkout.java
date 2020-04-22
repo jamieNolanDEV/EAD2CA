@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,16 +63,23 @@ public class addWorkout extends AppCompatActivity {
                 day = dayText.getText().toString();
                 month = monthText.getText().toString();
                 year = yearText.getText().toString();
-                Intent intent = new Intent(addWorkout.this, MainActivity.class);
-                try {
-                    postRequest(userDataURL);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (!hasValidationErrors(day, month, year, workoutDuration, caloriesBurned, workoutDetails)) {
+                    try {
+                        postRequest(userDataURL);
+                        Intent intent = new Intent(addWorkout.this, MainActivity.class);
+                        startActivity(intent);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    Toast abs = Toast.makeText(addWorkout.this, "Error, Please verify the passwords match and all input fields have been used.", Toast.LENGTH_LONG);
+                    abs.show();
                 }
-                startActivity(intent);
 
             }
         });
+
 
     }
     public void postRequest(String userDataURL) throws IOException {
@@ -128,11 +136,52 @@ public class addWorkout extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         userId = sharedPreferences.getString("id", "");
     }
+    private boolean hasValidationErrors(String dayin, String monthin, String yearin, String duration, String calburned, String description) {
+
+        if(!day.isEmpty() && !monthin.isEmpty() && !yearin.isEmpty()) {
+            int dayint = Integer.parseInt(dayin);
+            int monthint = Integer.parseInt(monthin);
+            int yearint = Integer.parseInt(yearin);
+            if (dayint <= 0 && dayint >= 31) {
+                dayText.setError("Input correct day");
+                dayText.requestFocus();
+                return true;
+            }
+            if (monthint <= 0 && monthint >= 13) {
+                monthText.setError("Input correct Month");
+                monthText.requestFocus();
+                return true;
+            }
+            if (yearint <= 1980 && yearint >= 2100) {
+                yearText.setError("Input correct year");
+                yearText.requestFocus();
+                return true;
+            }
+        }
+        if (duration.isEmpty()) {
+            workoutDurationText.setError("Required");
+            workoutDurationText.requestFocus();
+            return true;
+        }
+        if (calburned.isEmpty()) {
+            caloriesBurnedText.setError("Required");
+            caloriesBurnedText.requestFocus();
+            return true;
+        }
+        if (description.isEmpty()) {
+            workoutDetailsText.setError("Required");
+            workoutDetailsText.requestFocus();
+            return true;
+        }
+
+        return false;
+
+    };
+}
 
 
 
 
-    }
 
 
 
