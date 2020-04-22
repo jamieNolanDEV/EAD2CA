@@ -63,7 +63,7 @@ public class ViewBMR extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
 
                         @Override
-                        public void run() {
+                            public void run() {
 
                             updateUI(bmr);
 
