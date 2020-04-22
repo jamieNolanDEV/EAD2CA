@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FitnessPal</string>
+    <string name="bmr" translatable="false">"BMR est un nombre minimum de calories nécessaires pour les fonctions de base au repos "</string>
+    <string name="bmrhead" translatable="false">"Ceci est votre BMR "</string>
+    <string name="back" translatable="false">Arrière</string>
+    <string name="bmidetail" translatable="false">"L'indice de masse corporelle (IMC) est une mesure qui utilise votre taille et votre poids pour déterminer si votre poids est sain. "</string>
+    <string name="bmiHead" translatable="false">"Ceci est votre IMC "</string>
+    <string name="workoutHead" translatable="false">"Voici vos séances d'entraînement, continuez! "</string>
+    <string name="Duration">Durée</string>
+    <string name="calburn">"Calories brûlées "</string>
+    <string name="desc">"La description "</string>
+    <string name="date">Date</string>
+    <string name="delete">"Supprimer"</string>
+    <string name="update">"Mettre à jour"</string>
+    <string name="viewBMR">"Voir BMR "</string>
+    <string name="workout">"Entraînements "</string>
+    <string name="viewbmi">"Voir l'IMC "</string>
+    <string name="newWork">"Ajouter un entraînement "</string>
+    <string name="details">"Vos détails "</string>
+    <string name="stats">"Vos statistiques "</string>
+    <string name="headerMain">"Bienvenue sur Fitness Tracker "</string>
+    <string name="quote">"La citation du jour va ici "</string>
+    <string name="detailsMore">"Vous pouvez mettre à jour vos coordonnées en modifiant les zones de texte ci-dessous "</string>
+    <string name="addWorkout">"Ajoutez vos détails d'entraînement ci-dessous! "</string>
+    <string name="day">journée</string>
+    <string name="month">Mois</string>
+    <string name="year">Année</string>
+    <string name="WorkoutTimeLast30">"Temps d'entraînement 30 derniers jours "</string>
+    <string name="WorkoutTime7">"Temps d'entraînement 7 derniers jours "</string>
+    <string name="CalBurnt30">"Calories brûlées au cours des 30 derniers jours "</string>
+    <string name="longWorkout">"Entraînement le plus long "</string>
+    <string name="CalBurnt7">"Calories brûlées au cours des 7 derniers jours "</string>
+</resources>

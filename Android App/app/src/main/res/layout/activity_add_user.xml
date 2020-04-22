@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="181dp"
+            android:layout_marginTop="15dp"
             android:orientation="vertical">
 
             <ImageView
@@ -50,7 +50,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
 
-                android:text="Set your password here, make sure this is secure!"
+                android:text="Please Enter your Details Below"
                 android:textColor="@color/colorWhite"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -67,13 +67,43 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/fname"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="38dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/colorWhite"
-                android:hint="Username"
+                android:hint="First Name"
                 android:inputType="text"
+
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+
+            <EditText
+                android:id="@+id/lname"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/colorWhite"
+                android:hint="Last Name"
+                android:inputType="text"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <EditText
+                android:id="@+id/age"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/colorWhite"
+                android:hint="Age"
+                android:inputType="number"
                 android:layout_marginBottom="25dp"
                 android:textSize="16sp"
                 android:paddingLeft="20dp"
@@ -81,31 +111,53 @@
                 android:textColorHint="@color/colorPrimaryDark"/>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etPasswordLayout"
+            <EditText
+                android:id="@+id/weight"
                 android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/colorWhite"
+                android:hint="Your Current Weight"
+                android:inputType="number"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/height"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/colorWhite"
+                android:hint="Your Height in cm"
+                android:inputType="number"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="104dp"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
-                >
+                android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Password"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:background="@color/colorWhite"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:textSize="16sp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textColorHint="@color/colorPrimaryDark"/>
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male" />
 
-                ]            </com.google.android.material.textfield.TextInputLayout>
-
-
-
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female" />
+            </RadioGroup>
 
 
             <Button
@@ -113,7 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Add Account"
+                android:text="Begin"
                 android:background="@drawable/rounded"/>
 
 
